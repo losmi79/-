@@ -71,3 +71,27 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+#Импортируем необходимые библиотеки для работы телеграм-бота
+from notifiers import get_notifier
+import time
+#Подключаем телеграм-бота
+token = '6745541432:AAH_l5IQCroYAv0_WKp0MbGr6MgIiMOw_tw'
+chat_id = '403904403'
+#Создаём функцию для отправки сообщений
+def send_notification(message):
+    telegram = get_notifier('telegram')
+    message_text = message
+    telegram.notify(token=token, chat_id=chat_id, message=message_text)
+
+if __name__ == "__main__":
+
+    while True:
+        message = ("Кто-то попался в поле зрения камеры!")
+        time.sleep(60)
+        send_notification(message)
